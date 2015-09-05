@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="favicon.ico" rel="shortcut icon" type="image/vnd.microsoft.icon">
+  <title>VZInspector</title>
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <script src="js/jquery.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script src="js/jquery.treetable.js"></script>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/jquery.treetable.css">
+  <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+  <script src="js/common.js"></script>
+  <script>
+  $(document).ready(function() {
+    var data = %%DATA%%;
+
+    +function renderData(items, parentId, container) {
+      for (var index in items) {
+        var item = items[index];
+        container.append("<tr data-tt-id='" + item.iden + "'" + (parentId?" data-tt-parent-id='" + parentId + "'":"") + "><td><span class='" + (item.type == "d"? "folder": "file") + "'>" + item.name + "</span></td><td>" + (item.type == "d"? "Folder": "File") + "</td><td>" + (item.size? item.size: "--") + "</td></tr>");
+        renderData(item.subs, item.iden, container);
+      }
+    }(data, null, $("#example-advanced tbody"));
+
+    $("#example-advanced").treetable({
+      expandable: true
+    });
+
+    // Highlight selected row
+    $("#example-advanced tbody").on("mousedown", "tr", function() {
+      $(".selected").not(this).removeClass("selected");
+      $(this).toggleClass("selected");
+    });
+  });
+  </script>
+</head>
+
+<body>
+  <header class="navbar navbar-static-top bs-docs-nav" id="top" role="banner">
+  </header>
+  <div class="container">
+    <h1 class="page-header">文件管理器</h1>
+    <table id="example-advanced">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Kind</th>
+          <th>Size</th>
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </div>
+  <footer class="jw-docs-footer" role="contentinfo">
+    <div class="container">
+      <p>Powered By <a href="https://github.com/JohnWong">John Wong</a>
+        <br class="footer-desc-endline">with the help of <a href="http://getbootstrap.com/">Twitter Bootstrap</a>
+        <p>
+    </div>
+    </div>
+  </footer>
+  <div id="delete-modal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Close</span>
+          </button>
+          <h4 class="modal-title">Confirm Deletion</h4>
+        </div>
+        <div class="modal-body">
+          <p>Confirm Deletion</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <button id="del-button" type="button" class="btn btn-danger">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>
