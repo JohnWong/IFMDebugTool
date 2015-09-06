@@ -123,6 +123,7 @@
 				529718DA1B9AD43200B8E1F2 /* Frameworks */,
 				529718DB1B9AD43200B8E1F2 /* Resources */,
 				B53F2FB8F09F06D69BA7A5CF /* Copy Pods Resources */,
+				529B7BE91B9C9F64003A8446 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -181,6 +182,19 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		529B7BE91B9C9F64003A8446 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Scripts/fbwatch.sh\"";
+		};
 		B53F2FB8F09F06D69BA7A5CF /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
