@@ -18,7 +18,7 @@ $(document).ready(function() {
     if ($this.hasClass("selected")){
       if ($this.hasClass("leaf")) {
         if ($this.find("span[class=folder]").length == 0) {
-          window.open ('/show1?id=' + encodeURI($this.data("ttId")), 'newwindow');
+          window.open ('/show?id=' + encodeURI($this.data("ttId")), 'newwindow');
         }
       } else {
         $("#example-advanced").treetable("expandNode", $this.data("ttId"));

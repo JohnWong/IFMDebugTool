@@ -9,6 +9,49 @@
 #import "JWFileListConnection.h"
 #import "HTTPFileResponse.h"
 #import "HTTPDynamicFileResponse.h"
+#import "JWHTTPConfig.h"
+#import "JWDowloadFileResponse.h"
+
+@interface JWURL : NSObject
+
+@property (nonatomic, strong) NSString *path;
+@property (nonatomic, strong) NSDictionary *params;
+
++ (instancetype)instanceFromURL:(NSString *)url;
+
+@end
+
+@implementation JWURL
+
++ (instancetype)instanceFromURL:(NSString *)url {
+    JWURL *instance = [[JWURL alloc] init];
+    NSRange range = [url rangeOfString:@"?"];
+    if (range.location == NSNotFound) {
+        instance.path = url;
+    } else {
+        instance.path = [url substringToIndex:range.location];
+        NSString *params = [url substringFromIndex:range.location + 1];
+        NSMutableDictionary *dict = [NSMutableDictionary dictionary];
+        for (NSString *str in [params componentsSeparatedByString:@"&"]) {
+            NSArray *kv = [str componentsSeparatedByString:@"="];
+            if (kv.count == 2) {
+                NSString *key = kv[0];
+                NSString *value = kv[1];
+                if ([key length] > 0 && [value length] > 0) {
+                    NSString *newValue;
+                    if ([value containsString:@"%"]) {
+                        newValue = [value stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+                    }
+                    dict[key] = newValue.length > 0? newValue : value;
+                }
+            }
+        }
+        instance.params = [dict copy];
+    }
+    return instance;
+}
+
+@end
 
 @implementation JWFileListConnection
 
@@ -52,6 +95,24 @@
     // It also does cool things for us like support for converting "/" to "/index.html",
     // and security restrictions (ensuring we don't serve documents outside configured document root folder).
     
+    JWURL *url = [JWURL instanceFromURL:path];
+    if ([@"/show" isEqualToString:url.path]) {
+        NSString *filePath = url.params[@"id"];
+        if (![filePath isKindOfClass:NSString.class]) {
+            return nil;
+        }
+        
+        NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
+        // Request file not under docRoot is unsupported
+        if (![filePath hasPrefix:docRoot]) {
+            return nil;
+        }
+        NSString *fileName = [filePath lastPathComponent];
+        JWDowloadFileResponse *response = [[JWDowloadFileResponse alloc] initWithFilePath:filePath forConnection:self];
+        response.fileName = fileName;
+        return response;
+    }
+    
     NSString *filePath = [self filePathForURI:path];
     
     // Convert to relative path
@@ -70,7 +131,8 @@
     
     if ([relativePath isEqualToString:@"/index.html"] || [relativePath isEqualToString:@"/"])
     {
-        NSArray *fileList = [self.class fileList:NSHomeDirectory()];
+        NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
+        NSArray *fileList = [self.class fileList: docRoot?:NSHomeDirectory()];
         NSData *json = [NSJSONSerialization dataWithJSONObject:fileList options:NSJSONWritingPrettyPrinted error:nil];
         NSDictionary *replacement = @{
                                       @"DATA": [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding]
