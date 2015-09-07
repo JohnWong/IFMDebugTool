@@ -16,29 +16,8 @@
   <link rel="stylesheet" href="css/jquery.treetable.css">
   <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
   <script src="js/common.js"></script>
-  <script>
-  $(document).ready(function() {
-    var data = %%DATA%%;
-
-    +function renderData(items, parentId, container) {
-      for (var index in items) {
-        var item = items[index];
-        container.append("<tr data-tt-id='" + item.iden + "'" + (parentId?" data-tt-parent-id='" + parentId + "'":"") + "><td><span class='" + (item.type == "d"? "folder": "file") + "'>" + item.name + "</span></td><td>" + (item.type == "d"? "Folder": "File") + "</td><td>" + (item.size? item.size: "--") + "</td></tr>");
-        renderData(item.subs, item.iden, container);
-      }
-    }(data, null, $("#example-advanced tbody"));
-
-    $("#example-advanced").treetable({
-      expandable: true
-    });
-
-    // Highlight selected row
-    $("#example-advanced tbody").on("mousedown", "tr", function() {
-      $(".selected").not(this).removeClass("selected");
-      $(this).toggleClass("selected");
-    });
-  });
-  </script>
+  <script>window.data = %%DATA%%</script>
+  <script src="js/index.js"></script>
 </head>
 
 <body>

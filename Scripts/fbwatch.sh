@@ -12,7 +12,6 @@ if [[ -f /usr/local/bin/watchman ]]; then
     /usr/local/bin/watchman watch ${PWD}/iOSFileManager/Web/
     /usr/local/bin/watchman -- trigger ${PWD}/iOSFileManager/Web/ bundle '*' -- ${PWD}/Scripts/fbsync.sh
 else
-    echo "please install 'watchman' first: "
-	echo "  brew install watchman"
+    echo "error: please install 'watchman' first: brew install watchman"
 fi
 

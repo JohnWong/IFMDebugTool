@@ -5,8 +5,7 @@
 PWD=`pwd`
 echo $PWD
 
-#cd ~
-OUTFILE=`ps -ax | grep "Library/Developer" | grep -iE 'iOSFileManager' | awk '{ print $NF }'`
+OUTFILE=`ps -ax | grep "Library/Developer/CoreSimulator/Devices" | grep -iE 'iOSFileManager' | awk '{ print $NF }'`
 while read execfile; do 
 	#SIM_DIR="$(dirname "$(dirname "$execfile")")"
 	APP_DIR="$(dirname "$execfile")"
@@ -15,6 +14,5 @@ $OUTFILE
 EOF
 
 #echo $APP_DIR
-cp -f "$PWD/$1" "$APP_DIR/Web/"
+cp -rf "$PWD/$1" "$APP_DIR/Web"
 
-echo "cp -f $PWD/$1 $APP_DIR/Web/">~/Desktop/1.txt

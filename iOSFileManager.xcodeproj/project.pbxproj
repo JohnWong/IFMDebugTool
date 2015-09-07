@@ -15,6 +15,9 @@
 		529718F11B9AD43200B8E1F2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529718EF1B9AD43200B8E1F2 /* LaunchScreen.xib */; };
 		529719081B9AE63D00B8E1F2 /* JWFileListConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 529719071B9AE63D00B8E1F2 /* JWFileListConnection.m */; };
 		5297190A1B9B006800B8E1F2 /* Web in Resources */ = {isa = PBXBuildFile; fileRef = 529719091B9B006800B8E1F2 /* Web */; };
+		529B7BEC1B9CB5D0003A8446 /* JWIOSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BEB1B9CB5D0003A8446 /* JWIOSFileManager.m */; };
+		529B7BEF1B9CBBC8003A8446 /* JWHTTPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */; };
+		529B7BF21B9CBC44003A8446 /* JWHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */; };
 		C6B3A5D332A4435A2AC552EA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88FC9120996E442A1DE21485 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +36,12 @@
 		529719061B9AE63D00B8E1F2 /* JWFileListConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWFileListConnection.h; sourceTree = "<group>"; };
 		529719071B9AE63D00B8E1F2 /* JWFileListConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWFileListConnection.m; sourceTree = "<group>"; };
 		529719091B9B006800B8E1F2 /* Web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Web; sourceTree = "<group>"; };
+		529B7BEA1B9CB5D0003A8446 /* JWIOSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWIOSFileManager.h; sourceTree = "<group>"; };
+		529B7BEB1B9CB5D0003A8446 /* JWIOSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWIOSFileManager.m; sourceTree = "<group>"; };
+		529B7BED1B9CBBC8003A8446 /* JWHTTPConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWHTTPConfig.h; sourceTree = "<group>"; };
+		529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWHTTPConfig.m; sourceTree = "<group>"; };
+		529B7BF01B9CBC44003A8446 /* JWHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWHTTPServer.h; sourceTree = "<group>"; };
+		529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWHTTPServer.m; sourceTree = "<group>"; };
 		88FC9120996E442A1DE21485 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA4E3FE545F78E95BF8467 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,6 +90,12 @@
 				529718E01B9AD43200B8E1F2 /* Supporting Files */,
 				529719061B9AE63D00B8E1F2 /* JWFileListConnection.h */,
 				529719071B9AE63D00B8E1F2 /* JWFileListConnection.m */,
+				529B7BEA1B9CB5D0003A8446 /* JWIOSFileManager.h */,
+				529B7BEB1B9CB5D0003A8446 /* JWIOSFileManager.m */,
+				529B7BED1B9CBBC8003A8446 /* JWHTTPConfig.h */,
+				529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */,
+				529B7BF01B9CBC44003A8446 /* JWHTTPServer.h */,
+				529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */,
 			);
 			path = iOSFileManager;
 			sourceTree = "<group>";
@@ -172,9 +187,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529718F11B9AD43200B8E1F2 /* LaunchScreen.xib in Resources */,
 				529718EC1B9AD43200B8E1F2 /* Main.storyboard in Resources */,
 				5297190A1B9B006800B8E1F2 /* Web in Resources */,
-				529718F11B9AD43200B8E1F2 /* LaunchScreen.xib in Resources */,
 				529718EE1B9AD43200B8E1F2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -184,14 +199,14 @@
 /* Begin PBXShellScriptBuildPhase section */
 		529B7BE91B9C9F64003A8446 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			files = (
 			);
 			inputPaths = (
 			);
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Scripts/fbwatch.sh\"";
 		};
@@ -232,10 +247,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				529B7BEF1B9CBBC8003A8446 /* JWHTTPConfig.m in Sources */,
 				529718E91B9AD43200B8E1F2 /* ViewController.m in Sources */,
+				529B7BF21B9CBC44003A8446 /* JWHTTPServer.m in Sources */,
 				529718E61B9AD43200B8E1F2 /* AppDelegate.m in Sources */,
 				529719081B9AE63D00B8E1F2 /* JWFileListConnection.m in Sources */,
 				529718E31B9AD43200B8E1F2 /* main.m in Sources */,
+				529B7BEC1B9CB5D0003A8446 /* JWIOSFileManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

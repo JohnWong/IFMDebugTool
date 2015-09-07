@@ -70,14 +70,12 @@
     
     if ([relativePath isEqualToString:@"/index.html"] || [relativePath isEqualToString:@"/"])
     {
-        
-        NSString *indexPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web/index.html"];
         NSArray *fileList = [self.class fileList:NSHomeDirectory()];
         NSData *json = [NSJSONSerialization dataWithJSONObject:fileList options:NSJSONWritingPrettyPrinted error:nil];
         NSDictionary *replacement = @{
                                       @"DATA": [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding]
                                       };
-        return [[HTTPDynamicFileResponse alloc] initWithFilePath: indexPath
+        return [[HTTPDynamicFileResponse alloc] initWithFilePath: filePath
                                                                                 forConnection: self
                                                                                     separator: @"%%"
                                                                         replacementDictionary: replacement];
