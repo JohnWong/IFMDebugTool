@@ -1,6 +1,21 @@
 #example-advanced {
     font-size: 1.2em;
 }
+#example-advanced tr td, #example-advanced span, #example-advanced a {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+#contextMenu {
+  position: absolute;
+  display:none;
+}
+
+
+
 textarea {
     resize: vertical;
 }

@@ -11,20 +11,96 @@ $(document).ready(function() {
     expandable: true
   });
 
-  // Highlight selected row
-  $("#example-advanced tbody").on("click", "tr", function() {
-    $(".selected").not(this).removeClass("selected");
-    var $this = $(this);
-    if ($this.hasClass("selected")){
-      if ($this.hasClass("leaf")) {
-        if ($this.find("span[class=folder]").length == 0) {
-          window.open ('/show?id=' + encodeURI($this.data("ttId")), 'newwindow');
-        }
-      } else {
-        $("#example-advanced").treetable("expandNode", $this.data("ttId"));
+  function actionOpen(t) {
+    if (t.hasClass("leaf")) {
+      if (t.find("span[class=folder]").length == 0) {
+        window.open ('/open/' + encodeURI(t.data("ttId")), 'newwindow');
+      }
+    } else {
+      if (!t.hasClass("expanded")) {
+        $("#example-advanced").treetable("expandNode", t.data("ttId"));
+      } else {  
+        $("#example-advanced").treetable("collapseNode", $this.data("ttId"));
       }
     }
-    $(this).addClass("selected");
+  }
+
+  function actionDelete(t) {
+    $.ajax('/delete/' + encodeURI(t.data("ttId")))
+      .done(function(r) {
+        if (r == "success") {
+          $("#example-advanced").treetable("collapseNode", t.data("ttId"));
+          t.remove();
+        } else {
+          showMessage("[" + r.status + "] " + r.statusText + " " + r.responseText);
+        }
+      })
+      .fail(function(r) {
+        showMessage("[" + r.status + "] " + r.statusText + " " + r.responseText);
+      });
+  }
+
+  // Message display
+  var messageTimeout;
+    $("#message-modal").on('hidden.bs.modal', function (e) {
+      clearTimeout(messageTimeout);
   });
+
+  showMessage = function(message) {
+    $("#message-modal .modal-body").html(message);
+    $("#message-modal").modal({show: true, keyboard: true});
+    messageTimeout = setTimeout(function(){
+      $("#message-modal").modal("hide");
+    }, 2500);
+  };
+
+  // Highlight selected row
+  $("#example-advanced tbody").on("click", "tr", function(evt) {
+    $(".selected").not(this).removeClass("selected");
+    $(this).addClass("selected");
+    if (evt.target.tagName !== "A") {
+      actionOpen($(this));
+    };
+  });
+
+  +function bindContexMenu() {
+    var selItem;
+    var $contextMenu = $("#contextMenu");
+    $("#example-advanced tbody").on("contextmenu", "tr", function(e) {
+      $(".selected").not(this).removeClass("selected");
+      $(this).addClass("selected");
+      selItem = $(this)
+      $contextMenu.css({
+        display: "block",
+        left: e.pageX,
+        top: e.pageY
+      });
+      return false;
+    });
+    
+    $contextMenu.on("click", "a", function(evt) {
+      switch ($(evt.target).data("action")) {
+        case "open":
+          actionOpen(selItem);
+          break;
+        case "delete":
+          actionDelete(selItem);
+          break;
+      };
+      $contextMenu.hide();
+    });
+  }();
+  
+  // $.contextMenu({
+  //   selector: '#example-advanced tbody', 
+  //   callback: function(key, options) {
+  //     var m = "clicked: " + key;
+  //     window.console && console.log(m) || alert(m); 
+  //   },
+  //   items: {
+  //     "open": {name: "Open", icon: "edit"},
+  //     "delete": {name: "Delete", icon: ""}
+  //   }
+  // });
 
 });

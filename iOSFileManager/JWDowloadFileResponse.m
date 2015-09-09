@@ -38,8 +38,7 @@
         }
         if (contentType.length > 0) {
             return @{
-                     @"Content-Type": contentType,
-                     @"Content-Disposition": [NSString stringWithFormat:@"inline; filename=%@", _fileName]
+                     @"Content-Type": contentType
                      };
         } else {
             return @{

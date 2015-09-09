@@ -11,10 +11,13 @@
   <link rel="stylesheet" href="css/bootstrap-theme.min.css">
   <script src="js/jquery.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
+  <!-- treetable-->
   <script src="js/jquery.treetable.js"></script>
-  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/jquery.treetable.css">
   <link rel="stylesheet" href="css/jquery.treetable.theme.default.css">
+  
+
+  <link rel="stylesheet" href="css/style.css">
   <script src="js/common.js"></script>
   <script>window.data = %%DATA%%</script>
   <script src="js/index.js"></script>
@@ -36,6 +39,14 @@
       <tbody>
       </tbody>
     </table>
+    <div id="contextMenu" class="dropdown clearfix">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu" style="display:block;position:static;margin-bottom:5px;">
+      <li><a tabindex="-1" href="#" data-action="open">Open</a></li>
+      <li><a tabindex="-1" href="#" data-action="delete">Delete</a></li>
+      <li class="divider"></li>
+      <li><a tabindex="-1" href="#" data-action="close">Close</a></li>
+    </ul>
+  </div>
   </div>
   <footer class="jw-docs-footer" role="contentinfo">
     <div class="container">
@@ -45,7 +56,7 @@
     </div>
     </div>
   </footer>
-  <div id="delete-modal" class="modal fade">
+  <div id="message-modal" class="modal fade">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -53,14 +64,12 @@
             <span aria-hidden="true">&times;</span>
             <span class="sr-only">Close</span>
           </button>
-          <h4 class="modal-title">Confirm Deletion</h4>
+          <h4 class="modal-title">Message</h4>
         </div>
         <div class="modal-body">
-          <p>Confirm Deletion</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          <button id="del-button" type="button" class="btn btn-danger">Delete</button>
         </div>
       </div>
     </div>

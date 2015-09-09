@@ -11,6 +11,7 @@
 #import "HTTPDynamicFileResponse.h"
 #import "JWHTTPConfig.h"
 #import "JWDowloadFileResponse.h"
+#import "HTTPDataResponse.h"
 
 @interface JWURL : NSObject
 
@@ -55,6 +56,9 @@
 
 @implementation JWFileListConnection
 
+static NSString *const kActionShow = @"/open/";
+static NSString *const kActionDelete = @"/delete/";
+
 + (NSArray *)fileList:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSMutableArray *mutableArray = [NSMutableArray array];
@@ -96,21 +100,31 @@
     // and security restrictions (ensuring we don't serve documents outside configured document root folder).
     
     JWURL *url = [JWURL instanceFromURL:path];
-    if ([@"/show" isEqualToString:url.path]) {
-        NSString *filePath = url.params[@"id"];
-        if (![filePath isKindOfClass:NSString.class]) {
-            return nil;
+    if ([url.path hasPrefix:kActionShow]) {
+        NSString *filePath = [url.path substringFromIndex:kActionShow.length];
+        if ([filePath rangeOfString:@"%"].location != NSNotFound) {
+            filePath = [filePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]?:filePath;
         }
-        
         NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
         // Request file not under docRoot is unsupported
         if (![filePath hasPrefix:docRoot]) {
             return nil;
         }
-        NSString *fileName = [filePath lastPathComponent];
-        JWDowloadFileResponse *response = [[JWDowloadFileResponse alloc] initWithFilePath:filePath forConnection:self];
-        response.fileName = fileName;
+        HTTPFileResponse *response = [[HTTPFileResponse alloc] initWithFilePath:filePath forConnection:self];
         return response;
+    } else if ([url.path hasPrefix:kActionDelete]) {
+        NSString *filePath = [url.path substringFromIndex:kActionDelete.length];
+        if ([filePath rangeOfString:@"%"].location != NSNotFound) {
+            filePath = [filePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]?:filePath;
+        }
+        NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
+        // Request file not under docRoot is unsupported
+        if (![filePath hasPrefix:docRoot]) {
+            return nil;
+        }
+        NSError *error;
+        NSString *result = [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]? @"success": error.description;
+        return [[HTTPDataResponse alloc] initWithData:[result dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
     NSString *filePath = [self filePathForURI:path];

@@ -18,7 +18,6 @@
 		529B7BEC1B9CB5D0003A8446 /* JWIOSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BEB1B9CB5D0003A8446 /* JWIOSFileManager.m */; };
 		529B7BEF1B9CBBC8003A8446 /* JWHTTPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */; };
 		529B7BF21B9CBC44003A8446 /* JWHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */; };
-		52D3205F1B9DF10B00D7F619 /* JWDowloadFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 52D3205E1B9DF10B00D7F619 /* JWDowloadFileResponse.m */; };
 		C6B3A5D332A4435A2AC552EA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88FC9120996E442A1DE21485 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -43,8 +42,6 @@
 		529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWHTTPConfig.m; sourceTree = "<group>"; };
 		529B7BF01B9CBC44003A8446 /* JWHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWHTTPServer.h; sourceTree = "<group>"; };
 		529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWHTTPServer.m; sourceTree = "<group>"; };
-		52D3205D1B9DF10B00D7F619 /* JWDowloadFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWDowloadFileResponse.h; sourceTree = "<group>"; };
-		52D3205E1B9DF10B00D7F619 /* JWDowloadFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWDowloadFileResponse.m; sourceTree = "<group>"; };
 		88FC9120996E442A1DE21485 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA4E3FE545F78E95BF8467 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -99,8 +96,6 @@
 				529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */,
 				529B7BF01B9CBC44003A8446 /* JWHTTPServer.h */,
 				529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */,
-				52D3205D1B9DF10B00D7F619 /* JWDowloadFileResponse.h */,
-				52D3205E1B9DF10B00D7F619 /* JWDowloadFileResponse.m */,
 			);
 			path = iOSFileManager;
 			sourceTree = "<group>";
@@ -256,7 +251,6 @@
 				529718E91B9AD43200B8E1F2 /* ViewController.m in Sources */,
 				529B7BF21B9CBC44003A8446 /* JWHTTPServer.m in Sources */,
 				529718E61B9AD43200B8E1F2 /* AppDelegate.m in Sources */,
-				52D3205F1B9DF10B00D7F619 /* JWDowloadFileResponse.m in Sources */,
 				529719081B9AE63D00B8E1F2 /* JWFileListConnection.m in Sources */,
 				529718E31B9AD43200B8E1F2 /* main.m in Sources */,
 				529B7BEC1B9CB5D0003A8446 /* JWIOSFileManager.m in Sources */,
