@@ -7,12 +7,12 @@ echo $PWD
 
 OUTFILE=`ps -ax | grep "Library/Developer/CoreSimulator/Devices" | grep -iE 'iOSFileManager' | awk '{ print $NF }'`
 while read execfile; do 
-	#SIM_DIR="$(dirname "$(dirname "$execfile")")"
+	EXEC="$execfile"
 	APP_DIR="$(dirname "$execfile")"
 done<<EOF
 $OUTFILE
 EOF
 
-#echo $APP_DIR
-cp -rf "$PWD/$1" "$APP_DIR/Web"
-
+if [[ $EXEC != "" ]]; then
+	cp -rf "$PWD/$1" "$APP_DIR/Web"
+fi

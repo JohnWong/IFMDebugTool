@@ -2,7 +2,7 @@ $(document).ready(function() {
   +function renderData(items, parentId, container) {
     for (var index in items) {
       var item = items[index];
-      container.append("<tr data-tt-id='" + item.iden + "'" + (parentId?" data-tt-parent-id='" + parentId + "'":"") + "><td><span class='" + (item.type == "d"? "folder": "file") + "'>" + item.name + "</span></td><td>" + (item.type == "d"? "Folder": "File") + "</td><td>" + (item.size? item.size: "--") + "</td></tr>");
+      container.append("<tr data-tt-id='" + item.iden + "'" + (parentId?" data-tt-parent-id='" + parentId + "'":"") + "><td><span class='" + (item.type == "d"? "folder": "file") + "'>" + item.name + "</span></td><td>" + (item.type == "d"? "Folder": "File") + "</td><td>" + (item.size? item.size: "--") + "</td><td>" + item.owner + "</td><td>" + item.permi + "</td><td>" + item.creat + "</td><td>" + item.modif + "</td></tr>");
       renderData(item.subs, item.iden, container);
     }
   }(data, null, $("#example-advanced tbody"))
@@ -20,7 +20,7 @@ $(document).ready(function() {
       if (!t.hasClass("expanded")) {
         $("#example-advanced").treetable("expandNode", t.data("ttId"));
       } else {  
-        $("#example-advanced").treetable("collapseNode", $this.data("ttId"));
+        $("#example-advanced").treetable("collapseNode", t.data("ttId"));
       }
     }
   }
@@ -32,7 +32,7 @@ $(document).ready(function() {
           $("#example-advanced").treetable("collapseNode", t.data("ttId"));
           t.remove();
         } else {
-          showMessage("[" + r.status + "] " + r.statusText + " " + r.responseText);
+          showMessage(r);
         }
       })
       .fail(function(r) {
@@ -47,11 +47,12 @@ $(document).ready(function() {
   });
 
   showMessage = function(message) {
+    console.log(message);
     $("#message-modal .modal-body").html(message);
     $("#message-modal").modal({show: true, keyboard: true});
     messageTimeout = setTimeout(function(){
       $("#message-modal").modal("hide");
-    }, 2500);
+    }, 3500);
   };
 
   // Highlight selected row

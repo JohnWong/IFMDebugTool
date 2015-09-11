@@ -69,20 +69,41 @@ static NSString *const kActionDelete = @"/delete/";
             NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
             item[@"iden"] = absolutePath;
             item[@"name"] = fileName;
+            NSDictionary *attributes = [fileManager attributesOfItemAtPath:absolutePath error:nil];
+            if (attributes.fileSize < 1024) {
+                item[@"size"] = [NSString stringWithFormat:@"%@B", @(attributes.fileSize)];
+            } else if (attributes.fileSize < 1024 * 1024) {
+                item[@"size"] = [NSString stringWithFormat:@"%.1fK", attributes.fileSize / 1024.0];
+            } else {
+                item[@"size"] = [NSString stringWithFormat:@"%.1fM", attributes.fileSize / 1024.0 / 1024.0];
+            }
+            item[@"owner"] = [NSString stringWithFormat:@"%@/%@", [attributes fileOwnerAccountName]?:@"--", [attributes fileGroupOwnerAccountName]?:@""];
+            NSUInteger permission = [attributes filePosixPermissions];
+            NSString *permissionDesc = [NSString stringWithFormat:@"%@%@%@%@%@%@%@%@%@%@",
+                              [NSFileTypeSymbolicLink isEqualToString:[attributes fileType]]?@"l":@"-",
+                              permission & 1<<8? @"r": @"-",
+                              permission & 1<<7? @"w": @"-",
+                              permission & 1<<6? @"x": @"-",
+                              permission & 1<<5? @"r": @"-",
+                              permission & 1<<4? @"w": @"-",
+                              permission & 1<<3? @"x": @"-",
+                              permission & 1<<2? @"r": @"-",
+                              permission & 1<<1? @"w": @"-",
+                              permission & 1<<0? @"x": @"-"];
+                              
+            
+            item[@"permi"] = permissionDesc;
+            NSDateFormatter *formater = [[NSDateFormatter alloc] init];
+            [formater setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+            
+            item[@"creat"] = [formater stringFromDate:[attributes fileCreationDate]];
+            item[@"modif"] = [formater stringFromDate:[attributes fileModificationDate]];
+            
             if (isDictionary) {
                 item[@"type"] = @"d";
                 item[@"subs"] = [self fileList:absolutePath];
             } else {
-                NSDictionary *attributes = [fileManager attributesOfItemAtPath:absolutePath error:nil];
                 item[@"type"] = @"f";
-                if (attributes.fileSize < 1024) {
-                    item[@"size"] = [NSString stringWithFormat:@"%@B", @(attributes.fileSize)];
-                } else if (attributes.fileSize < 1024 * 1024) {
-                    item[@"size"] = [NSString stringWithFormat:@"%.1fKB", attributes.fileSize / 1024.0];
-                } else {
-                    item[@"size"] = [NSString stringWithFormat:@"%.1fMB", attributes.fileSize / 1024.0 / 1024.0];
-                }
-                
             }
             [mutableArray addObject:item];
         }
@@ -147,7 +168,8 @@ static NSString *const kActionDelete = @"/delete/";
     {
         NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
         NSArray *fileList = [self.class fileList: docRoot?:NSHomeDirectory()];
-        NSData *json = [NSJSONSerialization dataWithJSONObject:fileList options:NSJSONWritingPrettyPrinted error:nil];
+        NSError *error = nil;
+        NSData *json = [NSJSONSerialization dataWithJSONObject:fileList options:NSJSONWritingPrettyPrinted error:&error];
         NSDictionary *replacement = @{
                                       @"DATA": [[NSString alloc] initWithData:json encoding:NSUTF8StringEncoding]
                                       };
