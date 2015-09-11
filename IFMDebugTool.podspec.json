@@ -1,9 +1,9 @@
 {
   "name": "IFMDebugTool",
   "version": "1.0.0",
-  "summary": "IconFont is a way to build lossless images of pure color with font file.",
+  "summary": "Manage your app's file system in browser.",
   "homepage": "https://github.com/JohnWong/iOS-file-manager",
-  "description": "Manage your app file system in browser.",
+  "description": "Manage your app's file system in browser.",
   "authors": {
     "John Wong": "huangxiaozhe1988@gmail.com"
   },
@@ -14,12 +14,17 @@
   "license": "MIT",
   "requires_arc": true,
   "platforms": {
-    "ios": "6.1"
+    "ios": "5.0"
   },
   "frameworks": [
     "UIKit"
   ],
   "source_files": "Classes/*.{h,m}",
-  "resource": "Classes/ifm.bundle",
+  "resources": "Classes/ifm.bundle",
+  "dependencies": {
+    "CocoaHTTPServer": [
+
+    ]
+  },
   "requires_arc": true
 }
