@@ -6,7 +6,6 @@
 //  Copyright (c) 2015 John Wong. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "IFMHTTPServer.h"
 
 @interface IFMDebugTool : NSObject {
@@ -34,5 +33,13 @@
  *  @return Complete access url
  */
 - (NSString *)accessUrl;
+
+/**
+ * Set whether to start automaticly. Default is YES.
+ *
+ */
++ (void)setAutoStart:(BOOL)isAutoStart;
+
++ (instancetype)sharedInstance;
 
 @end

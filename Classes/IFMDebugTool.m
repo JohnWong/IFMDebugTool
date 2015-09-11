@@ -20,13 +20,22 @@
 
 @implementation IFMDebugTool
 
+static BOOL autoStart;
+
 + (void)load {
+    autoStart = YES;
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startTool) name:UIApplicationDidFinishLaunchingNotification object:nil];
+}
+
++ (void)setAutoStart:(BOOL)isAutoStart {
+    autoStart = isAutoStart;
 }
 
 + (void)startTool {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[IFMDebugTool sharedInstance] start];
+    if (autoStart) {
+        [[IFMDebugTool sharedInstance] start];
+    }
 }
 
 + (instancetype)sharedInstance {
@@ -73,6 +82,8 @@
     BOOL result = [_server start:&error];
     if (result) {
         NSLog(@"%@: %@", NSStringFromClass(self.class), [self accessUrl]);
+        _server.name = self.accessUrl;
+        [_server republishBonjour];
     } else {
         NSLog(@"%@: %@", NSStringFromClass(self.class), error.description);
     }
