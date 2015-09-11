@@ -1,5 +1,5 @@
 //
-//  JWHTTPServer.h
+//  IFMHTTPServer.h
 //  iOSFileManager
 //
 //  Created by John Wong on 9/7/15.
@@ -8,7 +8,7 @@
 
 #import "HTTPServer.h"
 
-@interface JWHTTPServer : HTTPServer
+@interface IFMHTTPServer : HTTPServer
 
 @property (nonatomic, strong) NSString *docRoot;
 

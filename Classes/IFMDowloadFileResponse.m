@@ -1,14 +1,14 @@
 //
-//  JWDowloadFileResponse.m
+//  IFMDowloadFileResponse.m
 //  iOSFileManager
 //
 //  Created by John Wong on 9/8/15.
 //  Copyright (c) 2015 John Wong. All rights reserved.
 //
 
-#import "JWDowloadFileResponse.h"
+#import "IFMDowloadFileResponse.h"
 
-@implementation JWDowloadFileResponse
+@implementation IFMDowloadFileResponse
 
 - (NSDictionary *)httpHeaders {
     if (_fileName) {

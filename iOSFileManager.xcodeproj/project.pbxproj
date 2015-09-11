@@ -13,11 +13,12 @@
 		529718EC1B9AD43200B8E1F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 529718EA1B9AD43200B8E1F2 /* Main.storyboard */; };
 		529718EE1B9AD43200B8E1F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 529718ED1B9AD43200B8E1F2 /* Images.xcassets */; };
 		529718F11B9AD43200B8E1F2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529718EF1B9AD43200B8E1F2 /* LaunchScreen.xib */; };
-		529719081B9AE63D00B8E1F2 /* JWFileListConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 529719071B9AE63D00B8E1F2 /* JWFileListConnection.m */; };
-		5297190A1B9B006800B8E1F2 /* Web in Resources */ = {isa = PBXBuildFile; fileRef = 529719091B9B006800B8E1F2 /* Web */; };
-		529B7BEC1B9CB5D0003A8446 /* JWIOSFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BEB1B9CB5D0003A8446 /* JWIOSFileManager.m */; };
-		529B7BEF1B9CBBC8003A8446 /* JWHTTPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */; };
-		529B7BF21B9CBC44003A8446 /* JWHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */; };
+		52FFFC701BA3314100A2AE99 /* ifm.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52FFFC651BA3314100A2AE99 /* ifm.bundle */; };
+		52FFFC711BA3314100A2AE99 /* IFMDowloadFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC671BA3314100A2AE99 /* IFMDowloadFileResponse.m */; };
+		52FFFC721BA3314100A2AE99 /* IFMFileListConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC691BA3314100A2AE99 /* IFMFileListConnection.m */; };
+		52FFFC731BA3314100A2AE99 /* IFMHTTPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC6B1BA3314100A2AE99 /* IFMHTTPConfig.m */; };
+		52FFFC741BA3314100A2AE99 /* IFMHTTPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC6D1BA3314100A2AE99 /* IFMHTTPServer.m */; };
+		52FFFC751BA3314100A2AE99 /* IFMDebugTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC6F1BA3314100A2AE99 /* IFMDebugTool.m */; };
 		C6B3A5D332A4435A2AC552EA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 88FC9120996E442A1DE21485 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -33,15 +34,17 @@
 		529718EB1B9AD43200B8E1F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		529718ED1B9AD43200B8E1F2 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		529718F01B9AD43200B8E1F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		529719061B9AE63D00B8E1F2 /* JWFileListConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWFileListConnection.h; sourceTree = "<group>"; };
-		529719071B9AE63D00B8E1F2 /* JWFileListConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWFileListConnection.m; sourceTree = "<group>"; };
-		529719091B9B006800B8E1F2 /* Web */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Web; sourceTree = "<group>"; };
-		529B7BEA1B9CB5D0003A8446 /* JWIOSFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWIOSFileManager.h; sourceTree = "<group>"; };
-		529B7BEB1B9CB5D0003A8446 /* JWIOSFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWIOSFileManager.m; sourceTree = "<group>"; };
-		529B7BED1B9CBBC8003A8446 /* JWHTTPConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWHTTPConfig.h; sourceTree = "<group>"; };
-		529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWHTTPConfig.m; sourceTree = "<group>"; };
-		529B7BF01B9CBC44003A8446 /* JWHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JWHTTPServer.h; sourceTree = "<group>"; };
-		529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JWHTTPServer.m; sourceTree = "<group>"; };
+		52FFFC651BA3314100A2AE99 /* ifm.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ifm.bundle; sourceTree = "<group>"; };
+		52FFFC661BA3314100A2AE99 /* IFMDowloadFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMDowloadFileResponse.h; sourceTree = "<group>"; };
+		52FFFC671BA3314100A2AE99 /* IFMDowloadFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMDowloadFileResponse.m; sourceTree = "<group>"; };
+		52FFFC681BA3314100A2AE99 /* IFMFileListConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMFileListConnection.h; sourceTree = "<group>"; };
+		52FFFC691BA3314100A2AE99 /* IFMFileListConnection.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMFileListConnection.m; sourceTree = "<group>"; };
+		52FFFC6A1BA3314100A2AE99 /* IFMHTTPConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMHTTPConfig.h; sourceTree = "<group>"; };
+		52FFFC6B1BA3314100A2AE99 /* IFMHTTPConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMHTTPConfig.m; sourceTree = "<group>"; };
+		52FFFC6C1BA3314100A2AE99 /* IFMHTTPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMHTTPServer.h; sourceTree = "<group>"; };
+		52FFFC6D1BA3314100A2AE99 /* IFMHTTPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMHTTPServer.m; sourceTree = "<group>"; };
+		52FFFC6E1BA3314100A2AE99 /* IFMDebugTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMDebugTool.h; sourceTree = "<group>"; };
+		52FFFC6F1BA3314100A2AE99 /* IFMDebugTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMDebugTool.m; sourceTree = "<group>"; };
 		88FC9120996E442A1DE21485 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		DEAA4E3FE545F78E95BF8467 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,6 +64,7 @@
 		529718D41B9AD43200B8E1F2 = {
 			isa = PBXGroup;
 			children = (
+				52FFFC641BA3314100A2AE99 /* Classes */,
 				529718DF1B9AD43200B8E1F2 /* iOSFileManager */,
 				529718DE1B9AD43200B8E1F2 /* Products */,
 				B22CE44B56A597628249ADDB /* Pods */,
@@ -79,7 +83,6 @@
 		529718DF1B9AD43200B8E1F2 /* iOSFileManager */ = {
 			isa = PBXGroup;
 			children = (
-				529719091B9B006800B8E1F2 /* Web */,
 				529718E41B9AD43200B8E1F2 /* AppDelegate.h */,
 				529718E51B9AD43200B8E1F2 /* AppDelegate.m */,
 				529718E71B9AD43200B8E1F2 /* ViewController.h */,
@@ -88,14 +91,6 @@
 				529718ED1B9AD43200B8E1F2 /* Images.xcassets */,
 				529718EF1B9AD43200B8E1F2 /* LaunchScreen.xib */,
 				529718E01B9AD43200B8E1F2 /* Supporting Files */,
-				529719061B9AE63D00B8E1F2 /* JWFileListConnection.h */,
-				529719071B9AE63D00B8E1F2 /* JWFileListConnection.m */,
-				529B7BEA1B9CB5D0003A8446 /* JWIOSFileManager.h */,
-				529B7BEB1B9CB5D0003A8446 /* JWIOSFileManager.m */,
-				529B7BED1B9CBBC8003A8446 /* JWHTTPConfig.h */,
-				529B7BEE1B9CBBC8003A8446 /* JWHTTPConfig.m */,
-				529B7BF01B9CBC44003A8446 /* JWHTTPServer.h */,
-				529B7BF11B9CBC44003A8446 /* JWHTTPServer.m */,
 			);
 			path = iOSFileManager;
 			sourceTree = "<group>";
@@ -107,6 +102,24 @@
 				529718E21B9AD43200B8E1F2 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		52FFFC641BA3314100A2AE99 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				52FFFC651BA3314100A2AE99 /* ifm.bundle */,
+				52FFFC661BA3314100A2AE99 /* IFMDowloadFileResponse.h */,
+				52FFFC671BA3314100A2AE99 /* IFMDowloadFileResponse.m */,
+				52FFFC681BA3314100A2AE99 /* IFMFileListConnection.h */,
+				52FFFC691BA3314100A2AE99 /* IFMFileListConnection.m */,
+				52FFFC6A1BA3314100A2AE99 /* IFMHTTPConfig.h */,
+				52FFFC6B1BA3314100A2AE99 /* IFMHTTPConfig.m */,
+				52FFFC6C1BA3314100A2AE99 /* IFMHTTPServer.h */,
+				52FFFC6D1BA3314100A2AE99 /* IFMHTTPServer.m */,
+				52FFFC6E1BA3314100A2AE99 /* IFMDebugTool.h */,
+				52FFFC6F1BA3314100A2AE99 /* IFMDebugTool.m */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 		B22CE44B56A597628249ADDB /* Pods */ = {
@@ -187,9 +200,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				52FFFC701BA3314100A2AE99 /* ifm.bundle in Resources */,
 				529718F11B9AD43200B8E1F2 /* LaunchScreen.xib in Resources */,
 				529718EC1B9AD43200B8E1F2 /* Main.storyboard in Resources */,
-				5297190A1B9B006800B8E1F2 /* Web in Resources */,
 				529718EE1B9AD43200B8E1F2 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -247,13 +260,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				529B7BEF1B9CBBC8003A8446 /* JWHTTPConfig.m in Sources */,
+				52FFFC751BA3314100A2AE99 /* IFMDebugTool.m in Sources */,
+				52FFFC711BA3314100A2AE99 /* IFMDowloadFileResponse.m in Sources */,
+				52FFFC721BA3314100A2AE99 /* IFMFileListConnection.m in Sources */,
 				529718E91B9AD43200B8E1F2 /* ViewController.m in Sources */,
-				529B7BF21B9CBC44003A8446 /* JWHTTPServer.m in Sources */,
 				529718E61B9AD43200B8E1F2 /* AppDelegate.m in Sources */,
-				529719081B9AE63D00B8E1F2 /* JWFileListConnection.m in Sources */,
+				52FFFC731BA3314100A2AE99 /* IFMHTTPConfig.m in Sources */,
 				529718E31B9AD43200B8E1F2 /* main.m in Sources */,
-				529B7BEC1B9CB5D0003A8446 /* JWIOSFileManager.m in Sources */,
+				52FFFC741BA3314100A2AE99 /* IFMHTTPServer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

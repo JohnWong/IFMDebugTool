@@ -1,5 +1,5 @@
 //
-//  JWDowloadFileResponse.h
+//  IFMDowloadFileResponse.h
 //  iOSFileManager
 //
 //  Created by John Wong on 9/8/15.
@@ -8,7 +8,7 @@
 
 #import "HTTPFileResponse.h"
 
-@interface JWDowloadFileResponse : HTTPFileResponse
+@interface IFMDowloadFileResponse : HTTPFileResponse
 
 @property (nonatomic, strong) NSString *fileName;
 

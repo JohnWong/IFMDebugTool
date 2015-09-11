@@ -1,5 +1,5 @@
 //
-//  JWHTTPConfig.h
+//  IFMHTTPConfig.h
 //  iOSFileManager
 //
 //  Created by John Wong on 9/7/15.
@@ -8,7 +8,7 @@
 
 #import "HTTPConnection.h"
 
-@interface JWHTTPConfig : HTTPConfig
+@interface IFMHTTPConfig : HTTPConfig
     
 @property (nonatomic, strong) NSString *docRoot;
 

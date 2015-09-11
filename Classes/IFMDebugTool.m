@@ -1,33 +1,52 @@
 //
-//  JWIOSFileManager.m
+//  IFMDebugTool.m
 //  iOSFileManager
 //
 //  Created by John Wong on 9/7/15.
 //  Copyright (c) 2015 John Wong. All rights reserved.
 //
 
-#import "JWIOSFileManager.h"
-#import "JWHTTPServer.h"
-#import "JWFileListConnection.h"
+#import "IFMDebugTool.h"
+#import "IFMHTTPServer.h"
+#import "IFMFileListConnection.h"
 
+#import <UIKit/UIKit.h>
 #import <ifaddrs.h>
 #import <arpa/inet.h>
 
-@interface JWIOSFileManager()
+@interface IFMDebugTool()
 
 @end
 
-@implementation JWIOSFileManager
+@implementation IFMDebugTool
+
++ (void)load {
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(startTool) name:UIApplicationDidFinishLaunchingNotification object:nil];
+}
+
++ (void)startTool {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    [[IFMDebugTool sharedInstance] start];
+}
+
++ (instancetype)sharedInstance {
+    static IFMDebugTool *tool;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        tool = [[IFMDebugTool alloc] init];
+    });
+    return tool;
+}
 
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _server = [[JWHTTPServer alloc] init];
+        _server = [[IFMHTTPServer alloc] init];
         _server.port = 10000;
         _server.type = @"_ifm._tcp.";
-        NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"Web"];
+        NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ifm.bundle"];
         _server.documentRoot = webPath;
-        _server.connectionClass = JWFileListConnection.class;
+        _server.connectionClass = IFMFileListConnection.class;
         _server.docRoot = NSHomeDirectory();
     }
     return self;

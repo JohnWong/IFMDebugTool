@@ -1,5 +1,5 @@
 //
-//  JWFileListConnection.h
+//  IFMFileListConnection.h
 //  iOSFileManager
 //
 //  Created by John Wong on 9/5/15.
@@ -8,6 +8,6 @@
 
 #import "HTTPConnection.h"
 
-@interface JWFileListConnection : HTTPConnection
+@interface IFMFileListConnection : HTTPConnection
 
 @end

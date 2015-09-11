@@ -1,19 +1,19 @@
 //
-//  JWFileListConnection.m
+//  IFMFileListConnection.m
 //  iOSFileManager
 //
 //  Created by John Wong on 9/5/15.
 //  Copyright (c) 2015 John Wong. All rights reserved.
 //
 
-#import "JWFileListConnection.h"
+#import "IFMFileListConnection.h"
 #import "HTTPFileResponse.h"
 #import "HTTPDynamicFileResponse.h"
-#import "JWHTTPConfig.h"
-#import "JWDowloadFileResponse.h"
+#import "IFMHTTPConfig.h"
+#import "IFMDowloadFileResponse.h"
 #import "HTTPDataResponse.h"
 
-@interface JWURL : NSObject
+@interface IFMURL : NSObject
 
 @property (nonatomic, strong) NSString *path;
 @property (nonatomic, strong) NSDictionary *params;
@@ -22,10 +22,10 @@
 
 @end
 
-@implementation JWURL
+@implementation IFMURL
 
 + (instancetype)instanceFromURL:(NSString *)url {
-    JWURL *instance = [[JWURL alloc] init];
+    IFMURL *instance = [[IFMURL alloc] init];
     NSRange range = [url rangeOfString:@"?"];
     if (range.location == NSNotFound) {
         instance.path = url;
@@ -54,7 +54,7 @@
 
 @end
 
-@implementation JWFileListConnection
+@implementation IFMFileListConnection
 
 static NSString *const kActionShow = @"/open/";
 static NSString *const kActionDelete = @"/delete/";
@@ -120,13 +120,13 @@ static NSString *const kActionDelete = @"/delete/";
     // It also does cool things for us like support for converting "/" to "/index.html",
     // and security restrictions (ensuring we don't serve documents outside configured document root folder).
     
-    JWURL *url = [JWURL instanceFromURL:path];
+    IFMURL *url = [IFMURL instanceFromURL:path];
     if ([url.path hasPrefix:kActionShow]) {
         NSString *filePath = [url.path substringFromIndex:kActionShow.length];
         if ([filePath rangeOfString:@"%"].location != NSNotFound) {
             filePath = [filePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]?:filePath;
         }
-        NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
+        NSString *docRoot = ((IFMHTTPConfig *)config).docRoot;
         // Request file not under docRoot is unsupported
         if (![filePath hasPrefix:docRoot]) {
             return nil;
@@ -138,7 +138,7 @@ static NSString *const kActionDelete = @"/delete/";
         if ([filePath rangeOfString:@"%"].location != NSNotFound) {
             filePath = [filePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]?:filePath;
         }
-        NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
+        NSString *docRoot = ((IFMHTTPConfig *)config).docRoot;
         // Request file not under docRoot is unsupported
         if (![filePath hasPrefix:docRoot]) {
             return nil;
@@ -166,7 +166,7 @@ static NSString *const kActionDelete = @"/delete/";
     
     if ([relativePath isEqualToString:@"/index.html"] || [relativePath isEqualToString:@"/"])
     {
-        NSString *docRoot = ((JWHTTPConfig *)config).docRoot;
+        NSString *docRoot = ((IFMHTTPConfig *)config).docRoot;
         NSArray *fileList = [self.class fileList: docRoot?:NSHomeDirectory()];
         NSError *error = nil;
         NSData *json = [NSJSONSerialization dataWithJSONObject:fileList options:NSJSONWritingPrettyPrinted error:&error];

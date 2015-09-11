@@ -1,5 +1,5 @@
 //
-//  JWIOSFileManager.h
+//  IFMDebugTool.h
 //  iOSFileManager
 //
 //  Created by John Wong on 9/7/15.
@@ -7,10 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "JWHTTPServer.h"
+#import "IFMHTTPServer.h"
 
-@interface JWIOSFileManager : NSObject {
-    JWHTTPServer *_server;
+@interface IFMDebugTool : NSObject {
+    IFMHTTPServer *_server;
 }
 /**
  *  Folder to inspect. Default is sandbox path.

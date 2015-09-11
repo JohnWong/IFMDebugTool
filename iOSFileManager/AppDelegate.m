@@ -7,19 +7,15 @@
 //
 
 #import "AppDelegate.h"
-#import "JWIOSFileManager.h"
 
 @interface AppDelegate ()
-
-@property (nonatomic, strong) JWIOSFileManager *fileManager;
 
 @end
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    _fileManager = [[JWIOSFileManager alloc] init];
-    [_fileManager start];
+    
     return YES;
 }
 
