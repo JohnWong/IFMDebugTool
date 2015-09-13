@@ -14,7 +14,10 @@ You can click to expand folder or open/download file. Right click to open or del
 
 ## Installation
 
-[![Coverage Status](https://coveralls.io/repos/CocoaPods/CocoaPods/badge.svg?branch=master&service=github)](https://coveralls.io/github/CocoaPods/CocoaPods?branch=master)
+Install via Cocoapods:
+```
+pod 'IFMDebugTool,:configurations => ['Debug']
+```
 
 ## Access URL
 
