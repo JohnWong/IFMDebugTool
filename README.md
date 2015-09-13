@@ -1,12 +1,20 @@
 # IFMDebugTool
 
+[![Version](http://img.shields.io/cocoapods/v/IFMDebugTool.svg?style=flat)](http://cocoapods.org/?q=IFMDebugTool)
+ [![Platform](http://img.shields.io/cocoapods/p/IFMDebugTool.svg?style=flat)]()
+ [![License](http://img.shields.io/cocoapods/l/IFMDebugTool.svg?style=flat)](https://github.com/JohnWong/iOS-file-manager/blob/master/LICENSE)
+
 Manage your app's file system in browser.
 
-## Remote Debug
+## Screenshot
 
 ![Screenshot](https://raw.githubusercontent.com/JohnWong/iOS-file-manager/master/Docs/screenshot.png)
 
 You can click to expand folder or open/download file. Right click to open or delete.
+
+## Installation
+
+[![Coverage Status](https://coveralls.io/repos/CocoaPods/CocoaPods/badge.svg?branch=master&service=github)](https://coveralls.io/github/CocoaPods/CocoaPods?branch=master)
 
 ## Access URL
 
