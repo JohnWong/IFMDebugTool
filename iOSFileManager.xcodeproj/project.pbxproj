@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5203C8B81BA5DCE20085A2FE /* IFMDebugTool.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 5203C8B71BA5DCE20085A2FE /* IFMDebugTool.bundle */; };
 		529718E31B9AD43200B8E1F2 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 529718E21B9AD43200B8E1F2 /* main.m */; };
 		529718E61B9AD43200B8E1F2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 529718E51B9AD43200B8E1F2 /* AppDelegate.m */; };
 		529718E91B9AD43200B8E1F2 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 529718E81B9AD43200B8E1F2 /* ViewController.m */; };
@@ -14,7 +15,6 @@
 		529718EE1B9AD43200B8E1F2 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 529718ED1B9AD43200B8E1F2 /* Images.xcassets */; };
 		529718F11B9AD43200B8E1F2 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 529718EF1B9AD43200B8E1F2 /* LaunchScreen.xib */; };
 		52E81CF71BA34B030032461B /* UIApplication+IFM.m in Sources */ = {isa = PBXBuildFile; fileRef = 52E81CF61BA34B030032461B /* UIApplication+IFM.m */; };
-		52FFFC701BA3314100A2AE99 /* ifm.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 52FFFC651BA3314100A2AE99 /* ifm.bundle */; };
 		52FFFC711BA3314100A2AE99 /* IFMDowloadFileResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC671BA3314100A2AE99 /* IFMDowloadFileResponse.m */; };
 		52FFFC721BA3314100A2AE99 /* IFMFileListConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC691BA3314100A2AE99 /* IFMFileListConnection.m */; };
 		52FFFC731BA3314100A2AE99 /* IFMHTTPConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 52FFFC6B1BA3314100A2AE99 /* IFMHTTPConfig.m */; };
@@ -25,6 +25,7 @@
 
 /* Begin PBXFileReference section */
 		35D09A22F863F933F8C42436 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		5203C8B71BA5DCE20085A2FE /* IFMDebugTool.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = IFMDebugTool.bundle; sourceTree = "<group>"; };
 		529718DD1B9AD43200B8E1F2 /* iOSFileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iOSFileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		529718E11B9AD43200B8E1F2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		529718E21B9AD43200B8E1F2 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -37,7 +38,6 @@
 		529718F01B9AD43200B8E1F2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		52E81CF51BA34B030032461B /* UIApplication+IFM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIApplication+IFM.h"; sourceTree = "<group>"; };
 		52E81CF61BA34B030032461B /* UIApplication+IFM.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIApplication+IFM.m"; sourceTree = "<group>"; };
-		52FFFC651BA3314100A2AE99 /* ifm.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = ifm.bundle; sourceTree = "<group>"; };
 		52FFFC661BA3314100A2AE99 /* IFMDowloadFileResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMDowloadFileResponse.h; sourceTree = "<group>"; };
 		52FFFC671BA3314100A2AE99 /* IFMDowloadFileResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IFMDowloadFileResponse.m; sourceTree = "<group>"; };
 		52FFFC681BA3314100A2AE99 /* IFMFileListConnection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IFMFileListConnection.h; sourceTree = "<group>"; };
@@ -110,7 +110,7 @@
 		52FFFC641BA3314100A2AE99 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				52FFFC651BA3314100A2AE99 /* ifm.bundle */,
+				5203C8B71BA5DCE20085A2FE /* IFMDebugTool.bundle */,
 				52FFFC661BA3314100A2AE99 /* IFMDowloadFileResponse.h */,
 				52FFFC671BA3314100A2AE99 /* IFMDowloadFileResponse.m */,
 				52FFFC681BA3314100A2AE99 /* IFMFileListConnection.h */,
@@ -205,7 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				52FFFC701BA3314100A2AE99 /* ifm.bundle in Resources */,
+				5203C8B81BA5DCE20085A2FE /* IFMDebugTool.bundle in Resources */,
 				529718F11B9AD43200B8E1F2 /* LaunchScreen.xib in Resources */,
 				529718EC1B9AD43200B8E1F2 /* Main.storyboard in Resources */,
 				529718EE1B9AD43200B8E1F2 /* Images.xcassets in Resources */,

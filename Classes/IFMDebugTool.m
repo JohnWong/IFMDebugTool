@@ -53,7 +53,7 @@ static BOOL autoStart;
         _server = [[IFMHTTPServer alloc] init];
         _server.port = 10000;
         _server.type = @"_ifm._tcp.";
-        NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"ifm.bundle"];
+        NSString *webPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"IFMDebugTool.bundle"];
         _server.documentRoot = webPath;
         _server.connectionClass = IFMFileListConnection.class;
         _server.docRoot = NSHomeDirectory();

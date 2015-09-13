@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 John Wong. All rights reserved.
 //
 
-#import "HTTPFileResponse.h"
+#import <CocoaHTTPServer/HTTPFileResponse.h>
 
 @interface IFMDowloadFileResponse : HTTPFileResponse
 

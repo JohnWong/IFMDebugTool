@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 John Wong. All rights reserved.
 //
 
-#import "HTTPServer.h"
+#import <CocoaHTTPServer/HTTPServer.h>
 
 @interface IFMHTTPServer : HTTPServer
 

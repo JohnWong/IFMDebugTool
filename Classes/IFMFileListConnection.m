@@ -7,11 +7,11 @@
 //
 
 #import "IFMFileListConnection.h"
-#import "HTTPFileResponse.h"
-#import "HTTPDynamicFileResponse.h"
+#import <CocoaHTTPServer/HTTPFileResponse.h>
+#import <CocoaHTTPServer/HTTPDynamicFileResponse.h>
 #import "IFMHTTPConfig.h"
 #import "IFMDowloadFileResponse.h"
-#import "HTTPDataResponse.h"
+#import <CocoaHTTPServer/HTTPDataResponse.h>
 
 @interface IFMURL : NSObject
 
