@@ -25,7 +25,12 @@ Three ways to get access URL.
 
 ### Printed to console after app is started
 
-### Shown after hake your device
+Access URL will be print after app is started:
+```
+2015-09-13 22:31:03.182 iOSFileManager[58434:3139811] IFMDebugTool: http://10.11.243.16:10000
+```
+
+### Shown after shake your device
 
 ![Screenshot](https://raw.githubusercontent.com/JohnWong/iOS-file-manager/master/Docs/device-screenshot.png)
 
