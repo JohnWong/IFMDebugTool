@@ -1,15 +1,15 @@
 {
   "name": "IFMDebugTool",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "summary": "Manage your app's file system in browser.",
-  "homepage": "https://github.com/JohnWong/iOS-file-manager",
+  "homepage": "https://github.com/JohnWong/IFMDebugTool",
   "description": "Manage your app's file system in browser.",
   "authors": {
     "John Wong": "huangxiaozhe1988@gmail.com"
   },
   "source": {
-    "git": "https://github.com/JohnWong/iOS-file-manager.git",
-    "tag": "1.0.0"
+    "git": "https://github.com/JohnWong/IFMDebugTool.git",
+    "tag": "1.0.1"
   },
   "license": "MIT",
   "requires_arc": true,
@@ -20,7 +20,7 @@
     "UIKit"
   ],
   "source_files": "Classes/*.{h,m}",
-  "resources": "Classes/ifm.bundle",
+  "resources": "Classes/IFMDebugTool.bundle",
   "dependencies": {
     "CocoaHTTPServer": [
 
