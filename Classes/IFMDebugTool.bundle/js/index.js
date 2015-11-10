@@ -14,7 +14,10 @@ $(document).ready(function() {
   function actionOpen(t) {
     if (t.hasClass("leaf")) {
       if (t.find("span[class=folder]").length == 0) {
-        window.open ('/open/' + encodeURI(t.data("ttId")), 'newwindow');
+        var win = window.open ('/open/' + encodeURI(t.data("ttId")), '_blank');
+        if (!win) {
+          showMessage("Please allow pop-ups for this site")
+        }
       }
     } else {
       if (!t.hasClass("expanded")) {

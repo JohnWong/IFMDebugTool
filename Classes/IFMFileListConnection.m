@@ -11,6 +11,7 @@
 #import <CocoaHTTPServer/HTTPDynamicFileResponse.h>
 #import "IFMHTTPConfig.h"
 #import "IFMDowloadFileResponse.h"
+#import "HTTPMessage.h"
 #import <CocoaHTTPServer/HTTPDataResponse.h>
 
 @interface IFMURL : NSObject
@@ -59,15 +60,21 @@
 static NSString *const kActionShow = @"/open/";
 static NSString *const kActionDelete = @"/delete/";
 
-+ (NSArray *)fileList:(NSString *)path {
+- (NSString *)docRoot {
+    return ((IFMHTTPConfig *)config).docRoot;
+}
+
+- (NSArray *)fileList:(NSString *)path {
     NSFileManager *fileManager = [NSFileManager defaultManager];
     NSMutableArray *mutableArray = [NSMutableArray array];
-    for (NSString *fileName in [fileManager contentsOfDirectoryAtPath:path error:nil]) {
-        NSString *absolutePath = [path stringByAppendingPathComponent:fileName];
+    NSString *absoluteParent = [[self docRoot] stringByAppendingPathComponent:path];
+    for (NSString *fileName in [fileManager contentsOfDirectoryAtPath:absoluteParent error:nil]) {
+        NSString *relativePath = [path stringByAppendingPathComponent:fileName];
+        NSString *absolutePath = [absoluteParent stringByAppendingPathComponent:fileName];
         BOOL isDictionary;
         if ([fileManager fileExistsAtPath:absolutePath isDirectory:&isDictionary]) {
             NSMutableDictionary *item = [[NSMutableDictionary alloc] init];
-            item[@"iden"] = absolutePath;
+            item[@"iden"] = relativePath;
             item[@"name"] = fileName;
             NSDictionary *attributes = [fileManager attributesOfItemAtPath:absolutePath error:nil];
             if (attributes.fileSize < 1024) {
@@ -101,7 +108,7 @@ static NSString *const kActionDelete = @"/delete/";
             
             if (isDictionary) {
                 item[@"type"] = @"d";
-                item[@"subs"] = [self fileList:absolutePath];
+                item[@"subs"] = [self fileList:relativePath];
             } else {
                 item[@"type"] = @"f";
             }
@@ -121,31 +128,22 @@ static NSString *const kActionDelete = @"/delete/";
     // and security restrictions (ensuring we don't serve documents outside configured document root folder).
     
     IFMURL *url = [IFMURL instanceFromURL:path];
-    if ([url.path hasPrefix:kActionShow]) {
+    if ([url.path hasPrefix:kActionShow] || [url.path hasPrefix:kActionDelete]) {
         NSString *filePath = [url.path substringFromIndex:kActionShow.length];
         if ([filePath rangeOfString:@"%"].location != NSNotFound) {
             filePath = [filePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]?:filePath;
         }
-        NSString *docRoot = ((IFMHTTPConfig *)config).docRoot;
-        // Request file not under docRoot is unsupported
-        if (![filePath hasPrefix:docRoot]) {
-            return nil;
+        NSString *docRoot = [self docRoot];
+        filePath = [docRoot stringByAppendingPathComponent:filePath];
+        
+        if ([url.path hasPrefix:kActionShow]) {
+            HTTPFileResponse *response = [[HTTPFileResponse alloc] initWithFilePath:filePath forConnection:self];
+            return response;
+        } else if ([url.path hasPrefix:kActionDelete]) {
+            NSError *error;
+            NSString *result = [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]? @"success": error.description;
+            return [[HTTPDataResponse alloc] initWithData:[result dataUsingEncoding:NSUTF8StringEncoding]];
         }
-        HTTPFileResponse *response = [[HTTPFileResponse alloc] initWithFilePath:filePath forConnection:self];
-        return response;
-    } else if ([url.path hasPrefix:kActionDelete]) {
-        NSString *filePath = [url.path substringFromIndex:kActionDelete.length];
-        if ([filePath rangeOfString:@"%"].location != NSNotFound) {
-            filePath = [filePath stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding]?:filePath;
-        }
-        NSString *docRoot = ((IFMHTTPConfig *)config).docRoot;
-        // Request file not under docRoot is unsupported
-        if (![filePath hasPrefix:docRoot]) {
-            return nil;
-        }
-        NSError *error;
-        NSString *result = [[NSFileManager defaultManager] removeItemAtPath:filePath error:&error]? @"success": error.description;
-        return [[HTTPDataResponse alloc] initWithData:[result dataUsingEncoding:NSUTF8StringEncoding]];
     }
     
     NSString *filePath = [self filePathForURI:path];
@@ -166,8 +164,7 @@ static NSString *const kActionDelete = @"/delete/";
     
     if ([relativePath isEqualToString:@"/index.html"] || [relativePath isEqualToString:@"/"])
     {
-        NSString *docRoot = ((IFMHTTPConfig *)config).docRoot;
-        NSArray *fileList = [self.class fileList: docRoot?:NSHomeDirectory()];
+        NSArray *fileList = [self fileList: @""];
         NSError *error = nil;
         NSData *json = [NSJSONSerialization dataWithJSONObject:fileList options:NSJSONWritingPrettyPrinted error:&error];
         NSDictionary *replacement = @{
@@ -179,6 +176,16 @@ static NSString *const kActionDelete = @"/delete/";
                                                                         replacementDictionary: replacement];
     }
     return [super httpResponseForMethod:method URI:path];
+}
+
+- (NSData *)preprocessErrorResponse:(HTTPMessage *)response
+{
+    NSString *message = [NSString stringWithFormat:@"Error: %@", @(response.statusCode)];
+    NSData *msgData = [message dataUsingEncoding:NSUTF8StringEncoding];
+    [response setBody:msgData];
+    NSString *contentLengthStr = [NSString stringWithFormat:@"%lu", (unsigned long)[msgData length]];
+    [response setHeaderField:@"Content-Length" value:contentLengthStr];
+    return [super preprocessErrorResponse:response];
 }
 
 @end
