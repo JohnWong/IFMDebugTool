@@ -1,6 +1,6 @@
 {
   "name": "IFMDebugTool",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "summary": "Manage your app's file system in browser.",
   "homepage": "https://github.com/JohnWong/IFMDebugTool",
   "description": "Manage your app's file system in browser.",
@@ -9,7 +9,7 @@
   },
   "source": {
     "git": "https://github.com/JohnWong/IFMDebugTool.git",
-    "tag": "1.0.1"
+    "tag": "1.0.3"
   },
   "license": "MIT",
   "requires_arc": true,
