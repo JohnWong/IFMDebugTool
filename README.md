@@ -14,7 +14,7 @@ You can click to expand folder or open/download file. Right click to open or del
 
 ## Installation
 
-Install via Cocoapods:
+Install via CocoaPods:
 ```
 pod 'IFMDebugTool,:configurations => ['Debug']
 ```
